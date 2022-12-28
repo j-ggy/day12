@@ -1,0 +1,95 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color:rgba(208, 234, 244, 0.685);
+}
+
+h1 {
+    color:rgb(27, 9, 106);
+    text-align: center;
+}
+
+
+
+.gridContainer {
+    width:100%;
+    display: grid;
+    grid-template-columns: min-content 250px;
+    justify-content: center;
+}
+
+.gridItem {
+    padding: 10px;
+    margin: auto;
+}
+
+.gridValue {
+    color: rgb(66, 18, 72); 
+}
+
+.button {
+    padding: 20px;
+    border-radius: 9px;
+    border: none;
+}
+
+#ethBalBut {
+    background-color:rgb(197, 144, 247);
+}
+
+#ethBalBut:hover {
+    background-color: white;
+    border: 1px solid rgb(197, 144, 247);
+}
+
+#ethAddyBut {
+    background-color: wheat;
+}
+#ethAddyBut:hover {
+    background-color: white;
+    border: 1px solid wheat;
+}
+
+#curBlockBut {
+    background-color:rgb(154, 222, 154);
+}
+
+#curBlockBut:hover {
+    background-color: white;
+    outline: 1px solid rgb(154, 222, 154);
+}
+
+#gasPriceBut {
+    background-color: rgb(245, 140, 161);
+}
+
+#gasPriceBut:hover {
+    background-color: white;
+    outline: 1px solid rgb(245, 140, 161)
+}
+
+#chainNetBut {
+    background-color: aquamarine;
+}
+
+#chainNetBut:hover {
+    background-color: white;
+    outline: 1px solid aquamarine;
+}
+
+#alertDiv {
+    text-align: center;
+}
+
+#alertBut {
+    background-color: rgb(224, 26, 26);
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    width:fit-content;
+    padding: 10px;
+}
+
+#alertBut:hover {
+    background-color: white;
+    border: 1px solid rgb(220,93, 93);
+}

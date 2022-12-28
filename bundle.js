@@ -1,24 +1,65 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const ethers = require("ethers");
 
-document.addEventListener("click", function() {
-    // provider is a ethereum provider, and we create it with window.ethereum, which is
-    // how we access Metamask in code.
-    // the window.ethereum object is available if a user has metamask installed.
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // we can call the .send method on the provider, and tell it what we want: to request accounts.
-    // this is how we get metamasks APPROVAL for a certain website.
-    provider.send("eth_requestAccounts", []).then(addresses => {
-        // use the ethers library to get the users balance, and display it to the page.
-        console.log(addresses);
-        const address = addresses[0];
-        console.log(address);
+const provider = new ethers.providers.Web3Provider(window.ethereum)
 
-        provider.getBalance(address).then(balance => {
-            console.log(balance.toString());
-        })
-    })
+let account;
+
+function getAccount() {
+    provider.send("eth_requestAccounts", []).then(addresses => {
+        console.log(addresses[0]);
+        account = addresses[0];
+    });
+}
+
+async function getBal() {
+    return ethers.utils.formatEther(await provider.getBalance(account))
+}
+
+async function getBlock() {
+    return await provider.getBlockNumber();
+}
+
+async function getGas() {
+    return (await provider.getGasPrice() / 1000000000).toFixed(2);
+}
+
+async function getNetChain() {
+    let net = await provider.getNetwork();
+    return `Network is "${net.name}" and Chain ID is ${net.chainId}.`
+}
+
+alertBut.addEventListener("click", function() {
+    alert("NO NOT THAT ONE.")
+})
+
+ethBalBut.addEventListener("click", function() {
+    let str = document.getElementById("ethBal");
+    getBal().then(balance => (str.textContent = (balance.toString() + " ETH")))
 });
+
+ethAddyBut.addEventListener("click", function() {
+    let str = document.getElementById("ethAddress");
+    str.textContent = account;
+})
+
+curBlockBut.addEventListener("click", () => {
+    let str = document.getElementById("currentBlock")
+    getBlock().then(block => (str.textContent = block));
+})
+
+gasPriceBut.addEventListener("click", () => {
+    let str = document.getElementById("gasPrice");
+    getGas().then(gas => (str.textContent = (gas + " gwei")));
+    
+})
+
+chainNetBut.addEventListener("click", () => {
+    let str = document.getElementById("chainAndNetwork")
+    getNetChain().then(netChain => (str.textContent = netChain));
+})
+
+getAccount();
 },{"ethers":150}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
