@@ -1,7 +1,7 @@
 const ethers = require("ethers");
 
-const provider = new ethers.providers.Web3Provider(window.ethereum)
 
+let provider;
 let account;
 
 function getAccount() {
@@ -30,6 +30,8 @@ async function getNetChain() {
 
 alertBut.addEventListener("click", function() {
     alert("NO NOT THAT ONE.")
+    provider = new ethers.providers.Web3Provider(window.ethereum)
+    getAccount();
 })
 
 ethBalBut.addEventListener("click", function() {
@@ -57,5 +59,3 @@ chainNetBut.addEventListener("click", () => {
     let str = document.getElementById("chainAndNetwork")
     getNetChain().then(netChain => (str.textContent = netChain));
 })
-
-getAccount();

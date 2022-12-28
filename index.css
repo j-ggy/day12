@@ -83,8 +83,7 @@ h1 {
 }
 
 #alertBut {
-    background-color: rgb(224, 26, 26);
-    font-size: 16px;
+    background-color:darkcyan;
     border-radius: 5px;
     border: none;
     width:fit-content;
@@ -93,5 +92,5 @@ h1 {
 
 #alertBut:hover {
     background-color: white;
-    border: 1px solid rgb(220,93, 93);
+    outline: 1px solid rgb(220,93, 93);
 }
