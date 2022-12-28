@@ -15,6 +15,7 @@ h1 {
     display: grid;
     grid-template-columns: min-content 250px;
     justify-content: center;
+    
 }
 
 .gridItem {
@@ -28,6 +29,7 @@ h1 {
 
 .button {
     padding: 20px;
+    width: 120px;
     border-radius: 9px;
     border: none;
 }
@@ -38,7 +40,7 @@ h1 {
 
 #ethBalBut:hover {
     background-color: white;
-    border: 1px solid rgb(197, 144, 247);
+    outline: 1px solid rgb(197, 144, 247);
 }
 
 #ethAddyBut {
@@ -46,7 +48,7 @@ h1 {
 }
 #ethAddyBut:hover {
     background-color: white;
-    border: 1px solid wheat;
+    outline: 1px solid wheat;
 }
 
 #curBlockBut {
